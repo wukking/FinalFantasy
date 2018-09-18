@@ -1,3 +1,7 @@
+
+# Created by https://www.gitignore.io/api/android
+
+### Android ###
 # Built application files
 *.apk
 *.ap_
@@ -63,3 +67,18 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+### Android Patch ###
+gen-external-apklibs
+
+
+# End of https://www.gitignore.io/api/android
+.idea/codeStyles/Project.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/runConfigurations.xml
+app/src/androidTest/java/com/wyson/finalfantasy/ExampleInstrumentedTest.java
+app/src/test/java/com/wyson/finalfantasy/ExampleUnitTest.java
+common/src/androidTest/java/com/wyson/common/ExampleInstrumentedTest.java
+common/src/test/java/com/wyson/common/ExampleUnitTest.java
