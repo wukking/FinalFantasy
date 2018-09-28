@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,6 +34,13 @@ public class LoadingDialog {
         loadingText.setText(msg);
 
         mLoadingDialog = new Dialog(context, R.style.CustomProgressDialog);
+        //无效
+//        Window window = mLoadingDialog.getWindow();
+//        if (window != null) {
+//            WindowManager.LayoutParams windowParams = window.getAttributes();
+//            windowParams.dimAmount = 0.0f;
+//            window.setAttributes(windowParams);
+//        }
         mLoadingDialog.setCancelable(cancelable);
         mLoadingDialog.setCanceledOnTouchOutside(false);
         mLoadingDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));

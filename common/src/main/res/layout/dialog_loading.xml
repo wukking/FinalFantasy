@@ -2,17 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_loading_dialog"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/transparent"
     android:gravity="center"
     android:minHeight="60dp"
     android:minWidth="180dp"
     android:orientation="vertical"
     android:padding="10dp">
+    <!--android:background="@drawable/shape_loading_dialog"-->
 
-    <ProgressBar
+    <!--<ProgressBar-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:indeterminateDrawable="@drawable/loading_dialog_progressbar" />-->
+    <com.wang.avi.AVLoadingIndicatorView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateDrawable="@drawable/loading_dialog_progressbar" />
+        app:indicatorName="BallSpinFadeLoaderIndicator"
+        app:indicatorColor="@color/colorAccent" />
 
     <TextView
         android:id="@+id/id_tv_loading_dialog_text"

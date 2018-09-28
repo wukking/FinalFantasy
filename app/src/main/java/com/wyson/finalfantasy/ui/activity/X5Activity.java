@@ -68,7 +68,6 @@ public class X5Activity extends BaseWebActivity {
     private android.webkit.ValueCallback<Uri[]> uploadFiles;
     private Uri imageUri;
 
-
     public static void startActivity(Context context, String url) {
         Intent intent = new Intent(context, X5Activity.class);
         intent.putExtra(INTENT_EXTRA_KEY_URL, url);
