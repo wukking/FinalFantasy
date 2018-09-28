@@ -23,7 +23,7 @@ import com.wyson.finalfantasy.ui.fragment.GalleryFragment;
 import com.wyson.finalfantasy.ui.fragment.MainFragment;
 import com.wyson.finalfantasy.ui.fragment.MusicFragment;
 import com.wyson.finalfantasy.ui.fragment.SettingsFragment;
-import com.wyson.finalfantasy.ui.RenderScriptUtils;
+import com.wyson.finalfantasy.util.RenderScriptUtils;
 
 import java.util.ArrayList;
 
@@ -91,6 +91,7 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
         initFragment(savedInstanceState);
+        switchTo(1);
     }
 
     private void initFragment(Bundle savedInstanceState) {

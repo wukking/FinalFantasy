@@ -17,7 +17,7 @@ public class LoadingDialog {
     /**
      * 加载数据对话框
      */
-    private static Dialog mLoadingDialog;
+    public static Dialog mLoadingDialog;
 
     /**
      * 显示加载对话框

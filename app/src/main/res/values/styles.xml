@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="X5Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--在非硬绘手机和声明需要controller的网页上，视频切换全屏和全屏切换回页面内会出现视频窗口透明问题-->
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+
 </resources>

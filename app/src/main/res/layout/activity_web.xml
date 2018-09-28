@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorWhite">
+    tools:context=".ui.activity.X5Activity">
 
-    <TextView
-        android:id="@+id/tv_text"
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/x5_webview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="相册"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>

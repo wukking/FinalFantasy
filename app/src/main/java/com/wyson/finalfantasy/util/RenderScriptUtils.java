@@ -1,4 +1,4 @@
-package com.wyson.finalfantasy.ui;
+package com.wyson.finalfantasy.util;
 
 import android.content.Context;
 import android.graphics.Bitmap;

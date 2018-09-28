@@ -119,14 +119,18 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 开启浮动加载进度条
      */
     protected void showProgressDialog(String message) {
-        LoadingDialog.showDialogForLoading(this, message, true);
+        if (LoadingDialog.mLoadingDialog == null){
+            LoadingDialog.showDialogForLoading(this, message, true);
+        }
     }
 
     /**
      * 停止浮动加载进度条
      */
     protected void closeProgressDialog() {
-        LoadingDialog.cancelDialogForLoading();
+        if (LoadingDialog.mLoadingDialog != null){
+            LoadingDialog.cancelDialogForLoading();
+        }
     }
 
     @Override
