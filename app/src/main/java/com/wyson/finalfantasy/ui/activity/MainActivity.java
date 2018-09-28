@@ -1,17 +1,24 @@
 package com.wyson.finalfantasy.ui.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
+import com.tencent.sonic.sdk.SonicConfig;
+import com.tencent.sonic.sdk.SonicEngine;
 import com.wyson.common.base.BaseActivity;
 import com.wyson.common.support.AppManager;
 import com.wyson.common.util.DisplayUtils;
@@ -19,6 +26,7 @@ import com.wyson.common.util.bitmap.BitmapUtils;
 import com.wyson.finalfantasy.R;
 import com.wyson.finalfantasy.app.AppConstant;
 import com.wyson.finalfantasy.impl.TabEntity;
+import com.wyson.finalfantasy.ui.activity.vas.SonicRuntimeImpl;
 import com.wyson.finalfantasy.ui.fragment.GalleryFragment;
 import com.wyson.finalfantasy.ui.fragment.MainFragment;
 import com.wyson.finalfantasy.ui.fragment.MusicFragment;
@@ -28,6 +36,8 @@ import com.wyson.finalfantasy.util.RenderScriptUtils;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
 
 /**
  * @author : Wuyson
@@ -92,6 +102,36 @@ public class MainActivity extends BaseActivity {
 //        });
         initFragment(savedInstanceState);
         switchTo(1);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WES);
+        } else {
+            init();
+        }
+    }
+
+    private static final int REQUEST_CODE_WES = 1;
+
+    private String[] permissions = new String[]{
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CALL_PHONE
+    };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_WES:
+                if (grantResults.length>0&&grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                    init();
+                }else {
+                    ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                }
+                break;
+            default:
+                break;
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void initFragment(Bundle savedInstanceState) {
@@ -258,4 +298,10 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    private void init() {
+        // init sonic engine
+        if (!SonicEngine.isGetInstanceAllowed()) {
+            SonicEngine.createInstance(new SonicRuntimeImpl(getApplication()), new SonicConfig.Builder().build());
+        }
+    }
 }

@@ -21,6 +21,7 @@ public class ToastCompat {
 
     private static Toast toast;
     private static Toast toast2;
+    private static Toast toast3;
 
     private static Toast initToast(CharSequence message, int duration) {
         if (toast == null) {
@@ -94,7 +95,7 @@ public class ToastCompat {
      *
      * @param message  文本信息
      * @param imgResId 图片ResId
-     * @return A Toast
+     * @return  A Toast
      */
     public static Toast showToastWithImg(String message, int imgResId) {
         if (toast2 == null) {
@@ -114,5 +115,18 @@ public class ToastCompat {
         toast2.setGravity(Gravity.CENTER, 0, 0);
         toast2.show();
         return toast2;
+    }
+
+    public static Toast showColorToast(String message) {
+        if (toast3 == null) {
+            toast3 = new Toast(BaseApplication.getAppContext());
+        }
+        View view = LayoutInflater.from(BaseApplication.getAppContext()).inflate(R.layout.toast_custom_bg, null);
+        TextView tv = view.findViewById(R.id.toast_custom_tv);
+        tv.setText(TextUtils.isEmpty(message) ? "" : message);
+        toast3.setView(view);
+        toast3.setGravity(Gravity.BOTTOM, 0, 180);
+        toast3.show();
+        return toast3;
     }
 }

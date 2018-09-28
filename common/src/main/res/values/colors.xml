@@ -10,4 +10,8 @@
 
     <color name="toast_white">#88ffffff</color>
     <color name="toast_stroke_gray">#99d4d4d4</color>
+
+    <color name="colorMain">#5F4B8B</color>
+    <color name="colorMainToast">#CC5F4B8B</color>
+
 </resources>

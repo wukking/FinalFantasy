@@ -25,6 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SpalshActivity" />
+        <activity android:name=".ui.activity.BrowserActivity" />
         <!--避免输入法界面弹出后遮挡输入光标的问题-->
         <activity
             android:name=".ui.activity.X5Activity"

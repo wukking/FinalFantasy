@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.wang.avi.indicators.BallSpinFadeLoaderIndicator;
+import com.wyson.common.support.ToastCompat;
 import com.wyson.common.util.progress.ProgressDialog;
 
 import butterknife.ButterKnife;
@@ -74,6 +75,49 @@ public abstract class BaseFragment extends Fragment {
 
     protected void closeProgressDialog() {
         ProgressDialog.dismissProgressDialog();
+    }
+
+    //--------------   Toast  ----------------------//
+
+    /**
+     * 短暂显示Toast提示(来自String)
+     **/
+    protected void showShortToast(String message) {
+        ToastCompat.showShort(message);
+    }
+
+    /**
+     * 短暂显示Toast提示(来自res)
+     **/
+    protected void showShortToast(int resId) {
+        ToastCompat.showShort(resId);
+    }
+
+    /**
+     * 长时间显示Toast提示(来自String)
+     **/
+    public void showLongToast(String message) {
+        ToastCompat.showLong(message);
+    }
+
+    /**
+     * 长时间显示Toast提示(来自res)
+     **/
+    public void showLongToast(int resId) {
+        ToastCompat.showLong(resId);
+    }
+
+    /**
+     * 带图片的toast
+     */
+    public void showToastWithImg(String message, int resId) {
+        ToastCompat.showToastWithImg(message, resId);
+    }
+    /**
+     * 带图片的toast
+     */
+    public void showColorToast(String message) {
+        ToastCompat.showColorToast(message);
     }
 
     @Override

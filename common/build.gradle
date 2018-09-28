@@ -57,4 +57,7 @@ dependencies {
     //else
     api 'org.greenrobot:eventbus:3.1.1'
     api 'com.android.support:recyclerview-v7:27.1.1'
+
+    api 'com.tencent.sonic:sdk:3.0.0'
+
 }
