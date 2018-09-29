@@ -1,8 +1,14 @@
 package com.wyson.finalfantasy.app;
 
+import android.support.annotation.NonNull;
+
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.soter.wrapper.SoterWrapperApi;
+import com.tencent.soter.wrapper.wrap_callback.SoterProcessCallback;
+import com.tencent.soter.wrapper.wrap_callback.SoterProcessNoExtResult;
+import com.tencent.soter.wrapper.wrap_task.InitializeParam;
 import com.wyson.common.base.BaseApplication;
 
 /**
@@ -29,5 +35,17 @@ public class AppApplication extends BaseApplication {
                 Logger.d(b+"");
             }
         });
+
+        InitializeParam param = new InitializeParam.InitializeParamBuilder()
+                .setScenes(0) // 场景值常量，后续使用该常量进行密钥生成或指纹认证
+                .build();
+        SoterWrapperApi.init(this,
+                new SoterProcessCallback<SoterProcessNoExtResult>() {
+                    @Override
+                    public void onResult(@NonNull SoterProcessNoExtResult result) {
+
+                    }
+                },
+                param);
     }
 }

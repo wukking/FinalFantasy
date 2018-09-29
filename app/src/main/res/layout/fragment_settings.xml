@@ -64,5 +64,15 @@
             android:text="清除VasSonic缓存"
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_vas_soter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="指纹验证By Tencent Soter"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp" />
     </LinearLayout>
 </LinearLayout>
