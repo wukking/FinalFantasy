@@ -36,7 +36,9 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 import com.wyson.common.base.BaseWebActivity;
+import com.wyson.common.support.ToastCompat;
 import com.wyson.finalfantasy.R;
+import com.wyson.finalfantasy.enumerate.WebMethodEnum;
 import com.wyson.finalfantasy.util.X5DataHelper;
 
 
@@ -92,6 +94,15 @@ public class X5Activity extends BaseWebActivity {
         setupX5WebViewClient();
         setupX5WebChromeClient();
         setupX5Settings();
+
+        x5Webview.setHorizontalScrollBarEnabled(false);
+        x5Webview.setVerticalFadingEdgeEnabled(false);
+        x5Webview.setDownloadListener(new MyWebViewDownLoadListener());
+        // 添加一个对象, 让JS可以访问该对象的方法, 该对象中可以调用JS中的方法
+        x5Webview.addJavascriptInterface(new Js2App(), "Js2App");
+        x5Webview.loadUrl(mUrl);
+        // 注册ContextMenu
+        registerForContextMenu(x5Webview);
     }
 
     private void setupX5Settings() {
@@ -99,6 +110,7 @@ public class X5Activity extends BaseWebActivity {
 //        String ua = webSetting.getUserAgentString();
 //        webSetting.setUserAgentString(ua+"/qwd");
         webSetting.setAllowFileAccess(true);
+        // 图片过大时自动适应屏幕用Normal
         webSetting.setLayoutAlgorithm(NARROW_COLUMNS);
         webSetting.setSupportZoom(true);
         //webSetting.setBuiltInZoomControls(true);
@@ -108,28 +120,29 @@ public class X5Activity extends BaseWebActivity {
         webSetting.setAppCacheEnabled(true);
         // webSetting.setDatabaseEnabled(true);
         webSetting.setDomStorageEnabled(true);
+        //JS
         webSetting.setJavaScriptEnabled(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+
         webSetting.setGeolocationEnabled(true);
         webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
         webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
         webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
         webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0).getPath());
-        // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
         webSetting.setPluginState(ON_DEMAND);
-        // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
-        // webSetting.setPreFectch(true);
-        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+        //设置缓存
         webSetting.setCacheMode(android.webkit.WebSettings.LOAD_DEFAULT);
+        //other
+        webSetting.setDefaultTextEncodingName("UTF-8");
+        // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        // webSetting.setPageCacheCapacity(IX5WebSettings.DEFAULT_CACHE_CAPACITY);
+        // webSetting.setPreFectch(true);
+        // 设置WebView是否使用其内置的变焦机制，该机制结合屏幕缩放控件使用，
+        // 默认是false，不使用内置变焦机制
+//        webSetting.setAllowContentAccess(false);
+//        webSetting.setSavePassword(false);
+//        webSetting.setSaveFormData(false);
 
-        x5Webview.setDownloadListener(new MyWebViewDownLoadListener());
-
-        // 添加一个对象, 让JS可以访问该对象的方法, 该对象中可以调用JS中的方法
-        x5Webview.addJavascriptInterface(new Js2App(), "JS2APP");
-
-        x5Webview.loadUrl(mUrl);
-
-        // 注册ContextMenu
-        registerForContextMenu(x5Webview);
     }
 
     private void setupX5WebChromeClient() {
@@ -348,7 +361,16 @@ public class X5Activity extends BaseWebActivity {
     static class Js2App {
         @JavascriptInterface
         public void getAppMethod(String flg, String val) {
-
+            WebMethodEnum method = WebMethodEnum.valueOf(Integer.parseInt(flg));
+            switch (method) {
+                case None:
+                    break;
+                case TOAST:
+                    ToastCompat.showColorToast(val);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -433,7 +455,7 @@ public class X5Activity extends BaseWebActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                if (x5Webview != null && x5Webview.canGoBack()){
+                if (x5Webview != null && x5Webview.canGoBack()) {
                     x5Webview.goBack();
                     return true;
                 }

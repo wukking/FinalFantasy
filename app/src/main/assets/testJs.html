@@ -1,0 +1,10 @@
+<html>
+<input type="button" id="btn" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
+
+<script type="text/javascript">
+    function showAndroidToast(toast) {
+    document.getElementById("btn").value = sonic.getPerformance();
+        sonic.showToast(toast)
+    }
+</script>
+</html>

@@ -102,7 +102,7 @@ public class MainActivity extends BaseActivity {
 //            }
 //        });
         initFragment(savedInstanceState);
-        switchTo(1);
+        switchTo(3);
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WES);

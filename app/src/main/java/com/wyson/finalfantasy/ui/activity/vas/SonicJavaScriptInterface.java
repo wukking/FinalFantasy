@@ -20,6 +20,7 @@ import android.os.Looper;
 import android.webkit.JavascriptInterface;
 
 import com.tencent.sonic.sdk.SonicDiffDataCallback;
+import com.wyson.common.support.ToastCompat;
 
 import org.json.JSONObject;
 
@@ -85,6 +86,11 @@ public class SonicJavaScriptInterface {
         }
 
         return "";
+    }
+
+    @JavascriptInterface
+    public void showToast(String msg){
+        ToastCompat.showColorToast(msg);
     }
 
     /*

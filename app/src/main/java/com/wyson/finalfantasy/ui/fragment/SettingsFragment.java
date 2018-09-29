@@ -38,7 +38,7 @@ public class SettingsFragment extends BaseFragment {
     TextView tvVasReset;
     Unbinder unbinder;
 
-    private static final String DEMO_URL = "http://onem.qiulinb.cn/ajax/regist?s=yimi079";
+    private static final String DEMO_URL = "file:///android_asset/testJs.html";
     private boolean mPreStatus = false;
     private AlertDialog mAlertDialog;
 
