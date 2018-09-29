@@ -70,6 +70,7 @@ public class BrowserActivity extends Activity {
         Intent intent = new Intent(context, BrowserActivity.class);
         intent.putExtra(PARAM_URL, url);
         intent.putExtra(PARAM_MODE, mode);
+        intent.putExtra(SonicJavaScriptInterface.PARAM_LOAD_URL_TIME,System.currentTimeMillis());
         context.startActivity(intent);
     }
 
