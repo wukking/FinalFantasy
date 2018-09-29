@@ -37,7 +37,8 @@ public class AppApplication extends BaseApplication {
         });
 
         InitializeParam param = new InitializeParam.InitializeParamBuilder()
-                .setScenes(0) // 场景值常量，后续使用该常量进行密钥生成或指纹认证
+                // 场景值常量，后续使用该常量进行密钥生成或指纹认证
+                .setScenes(0)
                 .build();
         SoterWrapperApi.init(this,
                 new SoterProcessCallback<SoterProcessNoExtResult>() {
