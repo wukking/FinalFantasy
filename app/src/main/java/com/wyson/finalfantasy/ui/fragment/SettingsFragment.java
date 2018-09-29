@@ -13,14 +13,14 @@ import com.tencent.soter.wrapper.SoterWrapperApi;
 import com.tencent.soter.wrapper.wrap_callback.SoterProcessAuthenticationResult;
 import com.tencent.soter.wrapper.wrap_callback.SoterProcessCallback;
 import com.tencent.soter.wrapper.wrap_callback.SoterProcessKeyPreparationResult;
-import com.tencent.soter.wrapper.wrap_callback.SoterProcessNoExtResult;
 import com.tencent.soter.wrapper.wrap_fingerprint.SoterFingerprintCanceller;
 import com.tencent.soter.wrapper.wrap_fingerprint.SoterFingerprintStateCallback;
 import com.tencent.soter.wrapper.wrap_task.AuthenticationParam;
 import com.wyson.common.base.BaseFragment;
 import com.wyson.finalfantasy.R;
-import com.wyson.finalfantasy.ui.activity.BrowserActivity;
-import com.wyson.finalfantasy.ui.activity.X5Activity;
+import com.wyson.finalfantasy.ui.activity.web.BrowserActivity;
+import com.wyson.finalfantasy.ui.activity.web.WebActivity;
+import com.wyson.finalfantasy.ui.activity.web.X5Activity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -59,9 +59,12 @@ public class SettingsFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.tv_x5, R.id.tv_vas,R.id.tv_vas_pre,R.id.tv_vas_reset,R.id.tv_vas_soter})
+    @OnClick({R.id.tv_original,R.id.tv_x5, R.id.tv_vas,R.id.tv_vas_pre,R.id.tv_vas_reset,R.id.tv_vas_soter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            case R.id.tv_original:
+                WebActivity.startAction(mContext,DEMO_URL);
+                break;
             case R.id.tv_x5:
                 X5Activity.startActivity(mContext, DEMO_URL);
                 break;

@@ -17,7 +17,6 @@ import android.widget.FrameLayout;
 
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
-import com.orhanobut.logger.Logger;
 import com.tencent.sonic.sdk.SonicConfig;
 import com.tencent.sonic.sdk.SonicEngine;
 import com.wyson.common.base.BaseActivity;
@@ -27,7 +26,7 @@ import com.wyson.common.util.bitmap.BitmapUtils;
 import com.wyson.finalfantasy.R;
 import com.wyson.finalfantasy.app.AppConstant;
 import com.wyson.finalfantasy.impl.TabEntity;
-import com.wyson.finalfantasy.ui.activity.vas.SonicRuntimeImpl;
+import com.wyson.finalfantasy.ui.activity.web.vas.SonicRuntimeImpl;
 import com.wyson.finalfantasy.ui.fragment.GalleryFragment;
 import com.wyson.finalfantasy.ui.fragment.MainFragment;
 import com.wyson.finalfantasy.ui.fragment.MusicFragment;
@@ -37,8 +36,6 @@ import com.wyson.finalfantasy.util.RenderScriptUtils;
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import permissions.dispatcher.NeedsPermission;
-import permissions.dispatcher.RuntimePermissions;
 
 /**
  * @author : Wuyson

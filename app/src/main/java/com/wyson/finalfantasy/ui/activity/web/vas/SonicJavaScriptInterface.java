@@ -11,7 +11,7 @@
  *
  */
 
-package com.wyson.finalfantasy.ui.activity.vas;
+package com.wyson.finalfantasy.ui.activity.web.vas;
 
 
 import android.content.Intent;

@@ -11,7 +11,7 @@
  *
  */
 
-package com.wyson.finalfantasy.ui.activity;
+package com.wyson.finalfantasy.ui.activity.web;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -37,9 +37,9 @@ import com.tencent.sonic.sdk.SonicSessionConfig;
 import com.tencent.sonic.sdk.SonicSessionConnection;
 import com.tencent.sonic.sdk.SonicSessionConnectionInterceptor;
 import com.wyson.finalfantasy.R;
-import com.wyson.finalfantasy.ui.activity.vas.SonicJavaScriptInterface;
-import com.wyson.finalfantasy.ui.activity.vas.SonicRuntimeImpl;
-import com.wyson.finalfantasy.ui.activity.vas.SonicSessionClientImpl;
+import com.wyson.finalfantasy.ui.activity.web.vas.SonicJavaScriptInterface;
+import com.wyson.finalfantasy.ui.activity.web.vas.SonicRuntimeImpl;
+import com.wyson.finalfantasy.ui.activity.web.vas.SonicSessionClientImpl;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;

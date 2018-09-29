@@ -27,10 +27,20 @@
         android:showDividers="middle|end">
 
         <TextView
+            android:id="@+id/tv_original"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="原生内核"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/tv_x5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             android:text="X5内核"
             android:textColor="@android:color/darker_gray"
             android:textSize="18sp" />

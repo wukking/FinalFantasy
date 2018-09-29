@@ -27,10 +27,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.SpalshActivity" />
-        <activity android:name=".ui.activity.BrowserActivity" />
+        <activity android:name=".ui.activity.web.BrowserActivity" />
+        <activity android:name=".ui.activity.web.WebActivity" />
         <!--避免输入法界面弹出后遮挡输入光标的问题-->
         <activity
-            android:name=".ui.activity.X5Activity"
+            android:name=".ui.activity.web.X5Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:theme="@style/X5Theme" />
 

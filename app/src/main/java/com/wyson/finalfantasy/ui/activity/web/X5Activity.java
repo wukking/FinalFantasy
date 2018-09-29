@@ -1,4 +1,4 @@
-package com.wyson.finalfantasy.ui.activity;
+package com.wyson.finalfantasy.ui.activity.web;
 
 
 import android.annotation.TargetApi;
@@ -78,7 +78,7 @@ public class X5Activity extends BaseWebActivity {
 
     @Override
     public int setupContentViewId() {
-        return R.layout.activity_web;
+        return R.layout.activity_x5;
     }
 
     @Override
