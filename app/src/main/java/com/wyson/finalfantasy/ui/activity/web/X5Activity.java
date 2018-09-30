@@ -107,22 +107,23 @@ public class X5Activity extends BaseWebActivity {
 
     private void setupX5Settings() {
         WebSettings webSetting = x5Webview.getSettings();
-//        String ua = webSetting.getUserAgentString();
-//        webSetting.setUserAgentString(ua+"/qwd");
+
+        //JS
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+
+        webSetting.setUseWideViewPort(true);
         webSetting.setAllowFileAccess(true);
         // 图片过大时自动适应屏幕用Normal
         webSetting.setLayoutAlgorithm(NARROW_COLUMNS);
+
         webSetting.setSupportZoom(true);
         //webSetting.setBuiltInZoomControls(true);
-        webSetting.setUseWideViewPort(true);
         webSetting.setSupportMultipleWindows(false);
         webSetting.setLoadWithOverviewMode(true);
         webSetting.setAppCacheEnabled(true);
         // webSetting.setDatabaseEnabled(true);
         webSetting.setDomStorageEnabled(true);
-        //JS
-        webSetting.setJavaScriptEnabled(true);
-        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
 
         webSetting.setGeolocationEnabled(true);
         webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
@@ -142,6 +143,9 @@ public class X5Activity extends BaseWebActivity {
 //        webSetting.setAllowContentAccess(false);
 //        webSetting.setSavePassword(false);
 //        webSetting.setSaveFormData(false);
+        //UserAgent
+//        String ua = webSetting.getUserAgentString();
+//        webSetting.setUserAgentString(ua+"/qwd");
 
     }
 

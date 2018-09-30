@@ -38,7 +38,7 @@ public class SettingsFragment extends BaseFragment {
     TextView tvVasReset;
     Unbinder unbinder;
 
-    private static final String DEMO_URL = "file:///android_asset/testJs.html";
+    private static final String DEMO_URL = "https://www.bilibili.com/video/av9467312?from=search&seid=2633469376916998331";
     private boolean mPreStatus = false;
     private AlertDialog mAlertDialog;
 

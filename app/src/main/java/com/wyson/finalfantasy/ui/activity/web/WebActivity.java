@@ -21,6 +21,9 @@ import com.wyson.finalfantasy.ui.activity.web.support.WebAppInterface;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+import static com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm.NARROW_COLUMNS;
+import static com.tencent.smtt.sdk.WebSettings.PluginState.ON_DEMAND;
+
 /**
  * 原生Webview
  */
@@ -64,13 +67,40 @@ public class WebActivity extends AppCompatActivity {
 //                null, "UTF-8", null);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
+    //Andromeda
     private void setupWebSettings() {
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+        WebSettings webSetting = webView.getSettings();
+        //设置缓存
+        webSetting.setCacheMode(android.webkit.WebSettings.LOAD_DEFAULT);
 
-        //定义自定义用户代理字符串
-        webSettings.setUserAgentString("Andromeda");
+        //Javascript
+        webSetting.setJavaScriptEnabled(true);
+        webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
+
+        // Need
+        webSetting.setUseWideViewPort(true);
+        webSetting.setAllowFileAccess(true);
+        // 图片过大时自动适应屏幕用Normal
+        webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
+        webSetting.setGeolocationEnabled(true);
+        webSetting.setDomStorageEnabled(true);
+
+        webSetting.setSupportZoom(true);
+        webSetting.setSupportMultipleWindows(false);
+        webSetting.setLoadWithOverviewMode(true);
+        webSetting.setAppCacheEnabled(true);
+        webSetting.setAppCachePath(this.getDir("appcache", 0).getPath());
+        webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
+        webSetting.setDatabasePath(this.getDir("databases", 0).getPath());
+        webSetting.setGeolocationDatabasePath(this.getDir("geolocation", 0).getPath());
+        webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
+        //webSetting.setBuiltInZoomControls(true);
+        //webSetting.setDatabaseEnabled(true);
+        // webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        // webSetting.setPreFectch(true);
+
+        //other
+        webSetting.setDefaultTextEncodingName("UTF-8");
 
         //If your app targets Android 7.1 (API level 25) or lower
         //  <application>
@@ -79,7 +109,7 @@ public class WebActivity extends AppCompatActivity {
         //        ...
         //  </application>
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            webSettings.setSafeBrowsingEnabled(false);
+            webSetting.setSafeBrowsingEnabled(false);
             //如果您希望在很长一段时间内不显示 web 视图对象,
             // 以便系统可以回收Renderer使用的内存, 则可以这样做。
             //本句中，第一个参数Renderer的优先级与应用程序的默认优先级相同

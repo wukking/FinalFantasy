@@ -17,6 +17,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.WindowManager;
@@ -186,6 +187,26 @@ public class BrowserActivity extends Activity {
         webSettings.setSaveFormData(false);
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
+        webSettings.setAllowFileAccess(true);
+
+        webView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (!url.startsWith("http")) {
+                    //不是Http的链接，其他应用打开
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        // 防止没有安装的情况
+                        e.printStackTrace();
+                    }
+                    return true;
+                }
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
 
         // webview is ready now, just tell session client to bind
         if (sonicSessionClient != null) {
