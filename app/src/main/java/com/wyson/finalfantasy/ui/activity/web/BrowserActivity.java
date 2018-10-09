@@ -168,6 +168,7 @@ public class BrowserActivity extends Activity {
         });
 
         WebSettings webSettings = webView.getSettings();
+        Logger.wtf("User-Agent: "+webSettings.getUserAgentString());
 
         // add java script interface
         // note:if api level lower than 17(android 4.2), addJavascriptInterface has security

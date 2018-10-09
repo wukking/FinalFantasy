@@ -21,6 +21,7 @@ import com.wyson.finalfantasy.R;
 import com.wyson.finalfantasy.ui.activity.web.BrowserActivity;
 import com.wyson.finalfantasy.ui.activity.web.WebActivity;
 import com.wyson.finalfantasy.ui.activity.web.X5Activity;
+import com.zzhoujay.richtext.RichText;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -36,6 +37,8 @@ public class SettingsFragment extends BaseFragment {
     TextView tvVasPre;
     @BindView(R.id.tv_vas_reset)
     TextView tvVasReset;
+    @BindView(R.id.tv_rich)
+    TextView tvRich;
     Unbinder unbinder;
 
     private static final String DEMO_URL = "https://www.bilibili.com/video/av9467312?from=search&seid=2633469376916998331";
@@ -59,7 +62,7 @@ public class SettingsFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.tv_original,R.id.tv_x5, R.id.tv_vas,R.id.tv_vas_pre,R.id.tv_vas_reset,R.id.tv_vas_soter})
+    @OnClick({R.id.tv_original,R.id.tv_x5, R.id.tv_vas,R.id.tv_vas_pre,R.id.tv_vas_reset,R.id.tv_vas_soter,R.id.tv_rich})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_original:
@@ -87,9 +90,17 @@ public class SettingsFragment extends BaseFragment {
             case R.id.tv_vas_soter:
                 soter();
                 break;
+            case R.id.tv_rich:
+                richText();
+                break;
             default:
                 break;
         }
+    }
+
+    private void richText() {
+        RichText.initCacheDir(mContext);
+        RichText.from("file:///android_asset/testJs").into(tvRich);
     }
 
     private void soter(){
